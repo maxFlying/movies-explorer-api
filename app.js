@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
@@ -5,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const { PORT = 6688 } = process.env;
 const app = express();
 const { celebrate, Joi, errors } = require('celebrate');
+const cors = require('cors');
 const NotFoundError = require('./errors/not-found-err');
 const { auth } = require('./middlewares/auth');
 const { register, login, logout } = require('./controllers/users');
@@ -17,6 +19,16 @@ mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({
+  origin: ['http://maxflying.diploma.nomoredomains.icu',
+    'https://maxflying.diploma.nomoredomains.icu',
+    'http://api.maxflying.diploma.nomoredomains.icu',
+    'https://api.maxflying.diploma.nomoredomains.icu',
+    'http://localhost:6688',
+    'http://localhost:6689',
+  ],
+  credentials: true,
+}));
 app.use(requestLogger);
 
 app.post('/signin', celebrate({
