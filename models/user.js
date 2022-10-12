@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     minlength: 2,
     maxlength: 30,
+    required: true,
   },
   email: {
     type: String,
@@ -14,7 +15,6 @@ const userSchema = new mongoose.Schema({
     unique: true,
     validate: {
       validator(v) {
-        // eslint-disable-next-line no-useless-escape
         return /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i.test(v);
       },
       message: 'Неверный формат email',
