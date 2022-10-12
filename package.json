@@ -1,7 +1,7 @@
 {
   "name": "movies-explorer-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Diploma project on Yandex.Practicum",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",

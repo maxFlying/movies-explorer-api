@@ -80,18 +80,13 @@ module.exports.login = (req, res, next) => {
         sameSite: true,
       });
 
-      res.send(user.toJSON());
+      res.send(user);
     })
     .catch(next);
 };
 
 module.exports.logout = (req, res, next) => {
-  const id = req.user._id;
-
-  User.findById(id)
-    .then((user) => {
-      res.clearCookie('jwt');
-      res.send(user);
-    })
-    .catch(next);
+  res.clearCookie('jwt');
+  res.send({ message: 'До свидания!' });
+  next();
 };
