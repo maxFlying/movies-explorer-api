@@ -23,7 +23,7 @@ app.use(cors({
     'http://api.maxflying.diploma.nomoredomains.icu',
     'https://api.maxflying.diploma.nomoredomains.icu',
     'http://localhost:6688',
-    'http://localhost:6689',
+    'http://localhost:3000',
   ],
   credentials: true,
 }));
